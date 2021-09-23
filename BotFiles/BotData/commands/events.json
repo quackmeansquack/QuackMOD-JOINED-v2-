@@ -1,0 +1,149 @@
+{
+  "command": [
+    {
+      "name": "User Joins Server",
+      "perms": [],
+      "actions": [
+        {
+          "name": "Role name",
+          "category": "User Data",
+          "type": "Get User Data",
+          "user": "${dbsVars.guild.ownerID}",
+          "field": "rolename",
+          "varname": "rolename",
+          "savevartype": "temp",
+          "vartype": "User"
+        },
+        {
+          "name": "Role name_1",
+          "category": "User Data",
+          "type": "Get User Data",
+          "user": "${dbsVars.guild.ownerID}",
+          "field": "channelname",
+          "varname": "channelname",
+          "savevartype": "temp",
+          "vartype": "User"
+        },
+        {
+          "name": "addrole",
+          "category": "User Action",
+          "type": "Add Role to User",
+          "user": "${tempVars.newuser.id}",
+          "rolename": "${tempVars.rolename}"
+        },
+        {
+          "name": "join message",
+          "category": "Message",
+          "type": "Send Embed",
+          "channelname": "${tempVars.channelname}",
+          "color": "FF0000",
+          "title": "Welcome ",
+          "url": "",
+          "authorname": "",
+          "authorimageurl": "",
+          "authorlink": "",
+          "description": "Welcome to ${dbsVars.guild.name}, <@${tempVars.newuser.id}>!",
+          "thumbnail": "${tempVars.newuser.user.avatarURL}",
+          "image": "",
+          "footer": "",
+          "timestamp": "false",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ],
+      "var": {
+        "user": "newuser"
+      }
+    },
+    {
+      "name": "Any Message",
+      "perms": [],
+      "actions": [],
+      "var": {
+        "user": "msguser"
+      }
+    },
+    {
+      "name": "User Kicked",
+      "perms": [],
+      "actions": [
+        {
+          "name": "Role name_1_1",
+          "category": "User Data",
+          "type": "Get User Data",
+          "user": "${dbsVars.guild.ownerID}",
+          "field": "channelname",
+          "varname": "channelname",
+          "savevartype": "temp",
+          "vartype": "User"
+        },
+        {
+          "name": "kick response",
+          "category": "Message",
+          "type": "Send Embed",
+          "channelname": "${tempVars.channelname}",
+          "color": "FF0000",
+          "title": "Kick",
+          "url": "",
+          "authorname": "",
+          "authorimageurl": "",
+          "authorlink": "",
+          "description": "<@${tempVars.kickuser.id}> was kicked ",
+          "thumbnail": "${tempVars.kickuser.user.avatarURL}",
+          "image": "",
+          "footer": "Reason: ${tempVars.kickreason}",
+          "timestamp": "false",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ],
+      "var": {
+        "user": "kickuser"
+      }
+    },
+    {
+      "name": "User Banned",
+      "perms": [],
+      "actions": [
+        {
+          "name": "Role name_1_2",
+          "category": "User Data",
+          "type": "Get User Data",
+          "user": "${dbsVars.guild.ownerID}",
+          "field": "channelname",
+          "varname": "channelname",
+          "savevartype": "temp",
+          "vartype": "User"
+        },
+        {
+          "name": "ban response",
+          "category": "Message",
+          "type": "Send Embed",
+          "channelname": "${tempVars.channelname}",
+          "color": "FF0000",
+          "title": "Ban",
+          "url": "",
+          "authorname": "",
+          "authorimageurl": "",
+          "authorlink": "",
+          "description": "${tempVars.banuser.id} was banned.",
+          "thumbnail": "${tempVars.banuser.user.avatarURL}",
+          "image": "",
+          "footer": "Length of ban: ${tempVars.lengthofban} days | Reason: ${tempVars.banreason} ",
+          "timestamp": "false",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ],
+      "var": {
+        "user": "banuser"
+      }
+    },
+    {
+      "name": "Bot Initialization",
+      "perms": [],
+      "actions": [],
+      "var": {}
+    }
+  ]
+}

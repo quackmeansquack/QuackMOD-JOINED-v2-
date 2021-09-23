@@ -1,0 +1,454 @@
+{
+  "nodes": [
+    {
+      "type": "event",
+      "name": "User Joins Server",
+      "guid": "49ebbc23-2903-4f05-ab69-bc9ecb4f067e",
+      "variables": {
+        "user": "newuser"
+      },
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "141e6a7b-de48-4f56-adfb-c1f39e174107"
+          ]
+        }
+      ],
+      "x": 99,
+      "y": 100,
+      "perms": []
+    },
+    {
+      "type": "event",
+      "name": "Any Message",
+      "guid": "49ebbc23-2903-4f05-ab69-bc9ecb4f8888",
+      "variables": {
+        "user": "msguser"
+      },
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": []
+        }
+      ],
+      "x": 76,
+      "y": 506,
+      "perms": []
+    },
+    {
+      "type": "event",
+      "name": "User Kicked",
+      "guid": "69ebbc23-2903-4f05-ab69-bc9ecb4f067e",
+      "variables": {
+        "user": "kickuser"
+      },
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "3dc07014-1b1d-4ecd-abfe-19588ac0572d"
+          ]
+        }
+      ],
+      "x": 82,
+      "y": 313,
+      "perms": []
+    },
+    {
+      "type": "event",
+      "name": "User Banned",
+      "guid": "77ebbc23-2003-4f05-ab69-bc9ecb4f067e",
+      "variables": {
+        "user": "banuser"
+      },
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "52c9142d-11a5-4e76-98a8-eb7683cb6926"
+          ]
+        }
+      ],
+      "x": 78,
+      "y": 406,
+      "perms": []
+    },
+    {
+      "type": "event",
+      "name": "Bot Initialization",
+      "guid": "0101bc23-2003-4f05-ab69-bc9ecb4f067e",
+      "variables": {},
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": []
+        }
+      ],
+      "x": 63,
+      "y": 603,
+      "perms": []
+    },
+    {
+      "type": "response",
+      "name": "join message",
+      "guid": "17e8a561-40dc-4c17-97f7-e744bd3791fe",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "b144b9ee-e7bd-4d4d-bb18-6edc177a9986"
+        }
+      ],
+      "x": 891,
+      "y": 46,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${tempVars.channelname}",
+        "FF0000",
+        "Welcome ",
+        "",
+        "",
+        "",
+        "",
+        "Welcome to ${dbsVars.guild.name}, <@${tempVars.newuser.id}>!",
+        "${tempVars.newuser.user.avatarURL}",
+        "",
+        "",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "kick response",
+      "guid": "c222dfb9-df62-45cb-9fe4-ca2d350a39ea",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "3dc07014-1b1d-4ecd-abfe-19588ac0572d"
+        }
+      ],
+      "x": 444,
+      "y": 242,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${tempVars.channelname}",
+        "FF0000",
+        "Kick",
+        "",
+        "",
+        "",
+        "",
+        "<@${tempVars.kickuser.id}> was kicked ",
+        "${tempVars.kickuser.user.avatarURL}",
+        "",
+        "Reason: ${tempVars.kickreason}",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "ban response",
+      "guid": "a912eba9-53a1-4aa6-a309-1da2b5f8a360",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "52c9142d-11a5-4e76-98a8-eb7683cb6926"
+        }
+      ],
+      "x": 430,
+      "y": 397,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${tempVars.channelname}",
+        "FF0000",
+        "Ban",
+        "",
+        "",
+        "",
+        "",
+        "${tempVars.banuser.id} was banned.",
+        "${tempVars.banuser.user.avatarURL}",
+        "",
+        "Length of ban: ${tempVars.lengthofban} days | Reason: ${tempVars.banreason} ",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "Role name",
+      "guid": "141e6a7b-de48-4f56-adfb-c1f39e174107",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "rolename",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "f8b03157-38ce-4e55-a6fa-8743e5e73f35"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "49ebbc23-2903-4f05-ab69-bc9ecb4f067e"
+        }
+      ],
+      "x": 303,
+      "y": 59,
+      "rtype": "User Data",
+      "rsubtype": "Get User Data",
+      "formdata": [
+        "${dbsVars.guild.ownerID}",
+        "rolename",
+        "rolename",
+        "temp",
+        "User"
+      ],
+      "formnames": [
+        "user",
+        "field",
+        "varname",
+        "saveVarType",
+        "vartype"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "addrole",
+      "guid": "b144b9ee-e7bd-4d4d-bb18-6edc177a9986",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "17e8a561-40dc-4c17-97f7-e744bd3791fe"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "f8b03157-38ce-4e55-a6fa-8743e5e73f35"
+        }
+      ],
+      "x": 690,
+      "y": 40,
+      "rtype": "User Action",
+      "rsubtype": "Add Role to User",
+      "formdata": [
+        "${tempVars.newuser.id}",
+        "${tempVars.rolename}"
+      ],
+      "formnames": [
+        "user",
+        "roleName"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "Role name_1",
+      "guid": "f8b03157-38ce-4e55-a6fa-8743e5e73f35",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "channelname",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "b144b9ee-e7bd-4d4d-bb18-6edc177a9986"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "141e6a7b-de48-4f56-adfb-c1f39e174107"
+        }
+      ],
+      "x": 478,
+      "y": 52,
+      "rtype": "User Data",
+      "rsubtype": "Get User Data",
+      "formdata": [
+        "${dbsVars.guild.ownerID}",
+        "channelname",
+        "channelname",
+        "temp",
+        "User"
+      ],
+      "formnames": [
+        "user",
+        "field",
+        "varname",
+        "saveVarType",
+        "vartype"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "Role name_1_1",
+      "guid": "3dc07014-1b1d-4ecd-abfe-19588ac0572d",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "channelname",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "c222dfb9-df62-45cb-9fe4-ca2d350a39ea"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "69ebbc23-2903-4f05-ab69-bc9ecb4f067e"
+        }
+      ],
+      "x": 254,
+      "y": 245,
+      "rtype": "User Data",
+      "rsubtype": "Get User Data",
+      "formdata": [
+        "${dbsVars.guild.ownerID}",
+        "channelname",
+        "channelname",
+        "temp",
+        "User"
+      ],
+      "formnames": [
+        "user",
+        "field",
+        "varname",
+        "saveVarType",
+        "vartype"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "Role name_1_2",
+      "guid": "52c9142d-11a5-4e76-98a8-eb7683cb6926",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "a912eba9-53a1-4aa6-a309-1da2b5f8a360"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "77ebbc23-2003-4f05-ab69-bc9ecb4f067e"
+        }
+      ],
+      "x": 245,
+      "y": 387,
+      "rtype": "User Data",
+      "rsubtype": "Get User Data",
+      "formdata": [
+        "${dbsVars.guild.ownerID}",
+        "channelname",
+        "channelname",
+        "temp",
+        "User"
+      ],
+      "formnames": [
+        "user",
+        "field",
+        "varname",
+        "saveVarType",
+        "vartype"
+      ]
+    }
+  ]
+}
